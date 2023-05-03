@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Compare Teams {% endblock %}
+{% block content %}
+<body>
+<h1>Compare Teams</h1>
+<form method="post">
+    <label for="team1">Team 1:</label>
+    <select id="team1" name="team1">
+        {% for team in teams %}
+            <option value="{{ team }}">{{ team }}</option>
+        {% endfor %}
+    </select><br><br>
+    <label for="team2">Team 2:</label>
+    <select id="team2" name="team2">
+        {% for team in teams %}
+            <option value="{{ team }}">{{ team }}</option>
+        {% endfor %}
+    </select><br><br>
+    <input type="submit" value="Compare">
+</form>
+</body>
+{% endblock %}

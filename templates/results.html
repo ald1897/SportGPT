@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} Sports Comparison Results {% endblock %}
+{% block content %}
+<body>
+<h1>Results</h1>
+<h2>{{ team1.name }}</h2>
+<p>Rushing offense grade: {{ team1.rushing_offense_grade }}</p>
+<p>Passing offense grade: {{ team1.passing_offense_grade }}</p>
+<p>Rushing defense grade: {{ team1.rushing_defense_grade }}</p>
+<p>Passing defense grade: {{ team1.passing_defense_grade }}</p>
+<h2>{{ team2.name }}</h2>
+<p>Rushing offense grade: {{ team2.rushing_offense_grade }}</p>
+<p>Passing offense grade: {{ team2.passing_offense_grade }}</p>
+<p>Rushing defense grade: {{ team2.rushing_defense_grade }}</p>
+<p>Passing defense grade: {{ team2.passing_defense_grade }}</p>
+<p>Team 1 Better Pass Defense?: {{ team1.winner }}</p>
+<p>Team 2 Better Pass Defense?: {{ team2.winner }}</p>
+</body>
+{%  endblock %}
