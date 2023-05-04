@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} SportGPT {% endblock %}
+{% block content %}
+<body>
+{% set matchup_list = matchups %}
+<!--{% set team1s = matchup_list[0] %}-->
+<!--{% set team2s = matchup_list[1] %}-->
+{% for matchup in matchup_list %}
+
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col"><h1>{{ matchup.HOME_TEAM }} VS {{ matchup.AWAY_TEAM}}: {{ matchup.GAME_DATE }}</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">Overall vs Overall</th>
+        <th scope="col">{{ matchup.OVR }}</th>
+        <th scope="col">{{ matchup.AWAY_OVR }}</th>
+    </tr>
+    </tbody>
+</table>
+{% endfor %}
+</body>
+{% endblock %}

@@ -1,19 +1,91 @@
 {% extends "base.html" %}
-{% block title %} Sports Comparison Results {% endblock %}
+{% block title %} SportGPT {% endblock %}
 {% block content %}
-<body>
-<h1>Results</h1>
-<h2>{{ team1.name }}</h2>
-<p>Rushing offense grade: {{ team1.rushing_offense_grade }}</p>
-<p>Passing offense grade: {{ team1.passing_offense_grade }}</p>
-<p>Rushing defense grade: {{ team1.rushing_defense_grade }}</p>
-<p>Passing defense grade: {{ team1.passing_defense_grade }}</p>
-<h2>{{ team2.name }}</h2>
-<p>Rushing offense grade: {{ team2.rushing_offense_grade }}</p>
-<p>Passing offense grade: {{ team2.passing_offense_grade }}</p>
-<p>Rushing defense grade: {{ team2.rushing_defense_grade }}</p>
-<p>Passing defense grade: {{ team2.passing_defense_grade }}</p>
-<p>Team 1 Better Pass Defense?: {{ team1.winner }}</p>
-<p>Team 2 Better Pass Defense?: {{ team2.winner }}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">{{ team1s.TEAM }} VS {{ team2s.TEAM }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Grades</th>
+                    <th scope="col">{{ team1s.TEAM }}</th>
+                    <th scope="col">{{ team2s.TEAM }}</th>
+                    <th scope="col">Advantage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">Overall vs Overall</th>
+                    <td>{{ team1s.OVR }}</td>
+                    <td>{{ team2s.OVR }}</td>
+                    <td>{{ team1s.TEAM if team1s.OVR > team2s.OVR else team2s.TEAM }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Overall Offense vs Defense</th>
+                    <td>{{ team1s.OFF }}</td>
+                    <td>{{ team2s.DEF }}</td>
+                    <td>{{ team1s.TEAM if team1s.OFF > team2s.DEF else team2s.TEAM }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Overall Defense vs Offense</th>
+                    <td>{{ team1s.DEF }}</td>
+                    <td>{{ team2s.OFF }}</td>
+                    <td>{{ team1s.TEAM if team1s.DEF > team2s.OFF else team2s.TEAM }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Passing/Receiving vs Pass Rush/Coverage</th>
+                    <td>{{ ((team1s.PASS + team1s.RECV + team1s.PBLK) / 3) }}</td>
+                    <td>{{ ((team2s.PRSH + team2s.COV) /2) }}</td>
+                    <td>{{ team1s.TEAM if ((team1s.PASS + team1s.RECV + team1s.PBLK) / 3) > ((team2s.PRSH + team2s.COV) /2) else team2s.TEAM }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Rushing Offense vs Rushing Defense</th>
+                    <td>{{ ((team1s.RUN + team1s.RBLK) /2) }}</td>
+                    <td>{{ team2s.RDEF}}</td>
+                    <td>{{ team1s.TEAM if ((team1s.RUN + team1s.RBLK) /2) > team2s.RDEF else team2s.TEAM }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pass Rush vs Pass Block</th>
+                    <td>{{ team1s.PRSH }}</td>
+                    <td>{{ team2s.PBLK }}</td>
+                    <td>{{ team1s.TEAM if team1s.PRSH > team2s.PBLK else team2s.TEAM }}</
+                </tr>
+                <tr>
+                    <th scope="row">Coverage vs Receiving</th>
+                    <td>{{ team1s.COV }}</td>
+                    <td>{{ team2s.RECV }}</td>
+                    <td>{{ team1s.TEAM if team1s.COV > team2s.RECV else team2s.TEAM }}</td>
+                </tr>
+<tr>
+                    <th scope="row">Rushing Offense vs Rushing Defense</th>
+                    <td>{{ team1s.RUN }}</td>
+                    <td>{{ team2s.RDEF }}</td>
+                    <td>{{ team1s.TEAM if team1s.RUN > team2s.RDEF else team2s.TEAM }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Rushing Defense vs Rushing Offense</th>
+                    <td>{{ team1s.RDEF }}</td>
+                    <td>{{ team2s.RUN }}</td>
+                    <td>{{ team1s.TEAM if team1s.RDEF > team2s.RUN else team2s.TEAM }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pass Rush vs Pass Block</th>
+                    <td>{{ team1s.PRSH }}</td>
+                    <td>{{ team2s.PBLK }}</td>
+                    <td>{{ team1s.TEAM if team1s.PRSH > team2s.PBLK else team2s.TEAM }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
-{%  endblock %}
+{% endblock %}
+```
+
+

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %} Sports Comparison Results {% endblock %}
+{% block content %}
+<body>
+<h1>{{ team1s.TEAM }} VS {{ team2s.TEAM }} </h1>
+<table class="table table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Grades</th>
+        <th scope="col">{{ team1s.TEAM }}</th>
+        <th scope="col">{{ team2s.TEAM }}</th>
+        <th scope="col">Advantage</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">Overall vs Overall</th>
+        <td>{{ team1s.OVR }}</td>
+        <td>{{ team2s.OVR }}</td>
+        <td> {{ team1s.TEAM if team1s.OVR > team2s.OVR else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">{{team1s.TEAM}} Offense vs {{teams2.TEAM}} Defense</th>
+        <td>{{ team1s.OFF }}</td>
+        <td>{{ team2s.DEF }}</td>
+        <td>{{ team1s.TEAM if team1s.OFF > team2s.DEF else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Passing</th>
+        <td>{{ team1s.PASS }}</td>
+        <td>{{ team2s.PASS }}</td>
+        <td> {{ team1s.TEAM if team1s.PASS > team2s.PASS else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Running</th>
+        <td>{{ team1s.RUN }}</td>
+        <td>{{ team2s.RUN }}</td>
+        <td> {{ team1s.TEAM if team1s.RUN > team2s.RUN else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Receiving</th>
+        <td>{{ team1s.RECV }}</td>
+        <td>{{ team2s.RECV }}</td>
+        <td> {{ team1s.TEAM if team1s.RECV > team2s.RECV else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Pass Blocking</th>
+        <td>{{ team1s.PBLK }}</td>
+        <td>{{ team2s.PBLK }}</td>
+        <td> {{ team1s.TEAM if team1s.PBLK > team2s.PBLK else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Run Blocking</th>
+        <td>{{ team1s.RBLK }}</td>
+        <td>{{ team2s.RBLK }}</td>
+        <td> {{ team1s.TEAM if team1s.RBLK > team2s.RBLK else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Defense</th>
+        <td>{{ team1s.DEF }}</td>
+        <td>{{ team2s.DEF }}</td>
+        <td> {{ team1s.TEAM if team1s.DEF > team2s.DEF else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Running Defense</th>
+        <td>{{ team1s.RDEF }}</td>
+        <td>{{ team2s.RDEF }}</td>
+        <td> {{ team1s.TEAM if team1s.RDEF > team2s.RDEF else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Tackling</th>
+        <td>{{ team1s.TACK }}</td>
+        <td>{{ team2s.TACK }}</td>
+        <td> {{ team1s.TEAM if team1s.TACK > team2s.TACK else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Pass Rush</th>
+        <td>{{ team1s.PRSH }}</td>
+        <td>{{ team2s.PRSH }}</td>
+        <td> {{ team1s.TEAM if team1s.PRSH > team2s.PRSH else team2s.TEAM }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Coverage</th>
+        <td>{{ team1s.COV }}</td>
+        <td>{{ team2s.COV }}</td>
+        <td> {{ team1s.TEAM if team1s.COV > team2s.COV else team2s.TEAM }}</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+{% endblock %}
